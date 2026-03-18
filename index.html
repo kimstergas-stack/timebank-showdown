@@ -95,6 +95,7 @@ padding:10px;
 <button onclick="chaos()">🎲 Trigger Chaos</button>
 <button onclick="resetGame()">🔄 Reset Game</button>
 </div>
+<button onclick="applyPlanningBonus()">🎁 Apply Planning Bonus</button>
 
 <script>
 let teams = [
@@ -119,7 +120,7 @@ html+=`
 <button class="gain" onclick="update(${i},1000)">🚫 Decline </button>
 <button class="gain" onclick="update(${i},1200)">🤝 Delegate </button>
 
-<button class="invest" onclick="update(${i},-2000)">📋 Plan </button>  
+<button class="invest" onclick="planDay(${i},-2000)">📋 Plan (-2000) </button>  
 <button class="invest" onclick="update(${i},2500)">🧠 Focus </button>
 
 <button class="power" onclick="sabotage(${i})">💣 Sabotage</button>
@@ -127,6 +128,13 @@ html+=`
 </div>`;
 });
 document.getElementById("teams").innerHTML=html;
+
+function planDay (i){
+	teams[i].balance -= 2000;
+	teams[i].planned= true;
+	alert("📋 Plan activated! End-of-day bonus unlocked.");
+	render();
+}
 
 let sorted=[...teams].sort((a,b)=>b.balance-a.balance);
 let lb="";
@@ -169,6 +177,16 @@ render();
 
 function resetGame(){
 teams.forEach(t=>t.balance=25200);
+render();
+}
+
+function applyPlanningBonus(){
+teams.forEach(team => {
+if(team.planned){
+team.balance += 1000;
+}
+});
+alert("🎁 Planning bonus applied to all teams who planned!");
 render();
 }
 
