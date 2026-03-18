@@ -98,10 +98,10 @@ padding:10px;
 
 <script>
 let teams = [
-{name:"Blue", balance:25200},
-{name:"Green", balance:25200},
-{name:"Purple", balance:25200},
-{name:"Orange", balance:25200}
+{name:"Blue", balance:25200, planned:false},
+{name:"Green", balance:25200, planned:false},
+{name:"Purple", balance:25200, planned:false},
+{name:"Orange", balance:25200, planned:false}
 ];
 
 function render(){
@@ -112,15 +112,15 @@ html+=`
 <h3>Team ${t.name}</h3>
 <div class="balance">$${t.balance}</div>
 
-<button class="loss" onclick="update(${i},-1000)">📅 Meeting (-1000)</button>
-<button class="loss" onclick="update(${i},-500)">📧 Email (-500)</button>
-<button class="loss" onclick="update(${i},-300)">🔄 Switch (-300)</button>
+<button class="loss" onclick="update(${i},-1000)">📅 Meeting </button>
+<button class="loss" onclick="update(${i},-500)">📧 Email </button>
+<button class="loss" onclick="update(${i},-300)">🔄 Switch Task </button>
 
-<button class="gain" onclick="update(${i},1000)">🚫 Decline (+1000)</button>
-<button class="gain" onclick="update(${i},1200)">🤝 Delegate (+1200)</button>
+<button class="gain" onclick="update(${i},1000)">🚫 Decline </button>
+<button class="gain" onclick="update(${i},1200)">🤝 Delegate </button>
 
-<button class="invest" onclick="update(${i},-2000)">📋 Plan (-2000)</button>
-<button class="invest" onclick="update(${i},2500)">🧠 Focus (+2500)</button>
+<button class="invest" onclick="update(${i},-2000)">📋 Plan </button>  
+<button class="invest" onclick="update(${i},2500)">🧠 Focus </button>
 
 <button class="power" onclick="sabotage(${i})">💣 Sabotage</button>
 <button class="power" onclick="shield(${i})">🛡 Shield</button>
